@@ -2,7 +2,6 @@ from operator import and_
 
 from behave import given, when, then
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 WAIT = 20
@@ -13,7 +12,7 @@ def open_main(context):
 
 @when('Click on cart icon')
 def click_cart(context):
-    wait = WebDriverWait(context.driver, WAIT)
+    wait = context.wait
     cart_icon = wait.until(
         EC.element_to_be_clickable(
             (By.CSS_SELECTOR, "a[aria-label*='cart' i], button[aria-label*='cart' i]")
@@ -23,7 +22,7 @@ def click_cart(context):
 
 @then('Should see "Your cart is empty"')
 def verify_empty_cart(context):
-    wait = WebDriverWait(context.driver, WAIT)
+    wait = context.wait
     message = wait.until(
         EC.visibility_of_element_located(
             (By.XPATH, "//*[contains(normalize-space(),'Your cart is empty')]")
@@ -33,7 +32,7 @@ def verify_empty_cart(context):
 
 @when("Click Sign In")
 def step_click_sign_in(context):
-    wait = WebDriverWait(context.driver, WAIT)
+    wait = context.wait
 
     sign_in_header = wait.until(
         EC.element_to_be_clickable(
@@ -46,7 +45,7 @@ def step_click_sign_in(context):
 
 @then("From the right side navigation menu click Sign In")
 def step_click_sign_in_drawer(context):
-    wait = WebDriverWait(context.driver, WAIT)
+    wait = context.wait
 
     sign_in_drawer = wait.until(
         EC.element_to_be_clickable(
@@ -58,7 +57,7 @@ def step_click_sign_in_drawer(context):
 
 @then("I should see the Sign In form")
 def step_verify_signin_form(context):
-    wait = WebDriverWait(context.driver, WAIT)
+    wait = context.wait
 
     email_input = wait.until(
         EC.visibility_of_element_located((By.CSS_SELECTOR, "input[type='email']"))
