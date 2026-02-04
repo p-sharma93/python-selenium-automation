@@ -25,5 +25,5 @@ def verify_products_name_img(context):
     for product in products[:8]:
         title = product.find_element(*PRODUCT_TITLE).text
         assert title, 'Product title not shown'
-        print(f'🟢{title}')
+        print(f'{title}')
         product.find_element(*PRODUCT_IMG)
