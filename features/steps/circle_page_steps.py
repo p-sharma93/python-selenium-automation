@@ -8,13 +8,6 @@ STORY_CARDS = (
     "//*[normalize-space()='Unlock added value']/ancestor::*[self::section or self::div][1]//a"
 )
 
-
-@given('Open Target Circle page')
-def open_circle_page(context):
-    context.driver.get('https://www.target.com/circle')
-    context.wait.until(EC.presence_of_element_located(UNLOCK_HEADER))
-
-
 @then('Verify {expected_amount} story cards under Unlock added value are shown')
 def verify_story_cards(context, expected_amount):
     expected_amount = int(expected_amount)

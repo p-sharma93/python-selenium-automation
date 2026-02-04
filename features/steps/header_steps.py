@@ -6,10 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 WAIT = 20
 
-@given('Open Target main page')
-def open_main(context):
-    context.driver.get('https://www.target.com/')
-
 @when('Click on cart icon')
 def click_cart(context):
     wait = context.wait
